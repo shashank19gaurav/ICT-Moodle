@@ -80,10 +80,6 @@
               <input type="text" name="firstname" id="firstname" placeholder="First Name" class="form-control">
             </div>
 
-            <label class="col-sm-2 control-label" for="textinput">Last Name</label>
-            <div class="col-sm-4">
-              <input type="text" name="lastname" id="lastname" placeholder="Last Name" class="form-control">
-            </div>
           </div>
 
           <!-- Text input-->

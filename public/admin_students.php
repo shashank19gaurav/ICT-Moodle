@@ -20,6 +20,7 @@
             if($lastname === "")
                 $firstname=$firstname." ";
             $query = "INSERT INTO student VALUES('$studentid','$firstname $lastname','$password','$classid','$contact','$email')";
+            echo $query;
             $connections = mysqli_query($connection,$query);
             if($connections){
                 $msg = "New student record added!";
