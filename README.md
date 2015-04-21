@@ -2,4 +2,4 @@
 JMI_Moodle-DBMS
 ===============
 
-Student portal for ICT Department for Manipal Institute of Technology
+Student portal for ICT Department of Manipal Institute of Technology
