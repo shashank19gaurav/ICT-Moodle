@@ -2,4 +2,4 @@
 JMI_Moodle-DBMS
 ===============
 
-DBMS Project on a student portal
+Student portal for ICT Department for Manipal Institute of Technology
