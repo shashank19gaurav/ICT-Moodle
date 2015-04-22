@@ -19,8 +19,8 @@
         {
             if($lastname === "")
                 $firstname=$firstname." ";
-            $query = "INSERT INTO student VALUES('$studentid','$firstname $lastname','$password','$classid','$contact','$email')";
-            echo $query;
+            $query = "INSERT INTO `student`( `first_name`, `last_name`, `password`, `email`, `contact`, `class_id`) VALUES('$firstname', '$lastname','$password','$email', '$contact', '$classid');";
+            //echo $query;
             $connections = mysqli_query($connection,$query);
             if($connections){
                 $msg = "New student record added!";
@@ -53,9 +53,9 @@
     } */
 
     else if(isset($_POST['delete'])){
-	$studentid2 = $_POST['sid'];
+        $studentid2 = $_POST['sid'];
         if(!empty($studentid2)){
-            $query = "DELETE FROM student WHERE STUDENT_ID = '$studentid2'";
+            $query = "DELETE FROM student WHERE id = '$studentid2'";
                 $connections = mysqli_query($connection,$query);
                 $msg = "Student record deleted successfully!";
 

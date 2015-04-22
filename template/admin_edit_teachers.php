@@ -22,12 +22,12 @@
                           
                       $tid = $_POST['trid'];
 
-                      $query = "SELECT `TR_NAME`, `PASSWORD`, `EMAIL` FROM `teacher` WHERE TR_ID='$tid'";
+                      $query = "SELECT * FROM `teacher` WHERE id = '$tid'";
                       $run = mysqli_query($connection,$query);
-                      $row = mysqli_fetch_row($run);
-                      $tname = explode(' ', $row[0]);
-                      $first = $tname[0];
-                      $second = $tname[1];
+                      $row = mysqli_fetch_assoc($run);
+                      //$tname = explode(' ', $row[0]);
+                      $first = $row['first_name'];
+                      $second = $row['last_name'];
                       
 
               echo '<div class="form-group">
@@ -46,7 +46,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Password</label>
             <div class="col-sm-7">
-              <input type="password" name="password" id="password" value="'.$row[1].'" class="form-control">
+              <input type="password" name="password" id="password" value="'.$row['password'].'" class="form-control">
             </div>
             <div class="checkbox col-sm-3" >
               <label>
@@ -59,7 +59,7 @@
 		   <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">E-mail</label>
             <div class="col-sm-4">
-              <input type="text" name="email" id="email" value="'.$row[2].'" class="form-control">
+              <input type="text" name="email" id="email" value="'.$row['email'].'" class="form-control">
             </div>
 			
           <div class="form-group">

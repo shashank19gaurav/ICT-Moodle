@@ -79,6 +79,11 @@
             <div class="col-sm-4">
               <input type="text" name="firstname" id="firstname" placeholder="First Name" class="form-control">
             </div>
+            
+            <label class="col-sm-2 control-label" for="textinput">Last Name: </label>
+            <div class="col-sm-4">
+              <input type="text" name="lastname" id="lastname" placeholder="Last Name" class="form-control">
+            </div>
 
           </div>
 
@@ -147,7 +152,7 @@
               <?php
               echo '<select id="e2" style="width:500px" name="sid" >'; 
                      
-                    $query = "SELECT STUDENT_ID FROM student ";
+                    $query = "SELECT id FROM student ";
                     $rs = mysqli_query($connection,$query);
                     $nm = mysqli_num_rows($rs);
                     for( $i=0; $i<$nm; $i++){
@@ -192,7 +197,7 @@
                       
                  
                     
-                    $query = "SELECT STUDENT_ID FROM student ";
+                    $query = "SELECT id FROM student ";
                     $rs = mysqli_query($connection,$query);
                     $nm = mysqli_num_rows($rs);
                     for( $i=0; $i<$nm; $i++){

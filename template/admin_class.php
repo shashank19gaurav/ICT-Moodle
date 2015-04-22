@@ -74,11 +74,12 @@
             <label class="col-sm-2 control-label" for="textinput">Department</label>
             <div class="col-sm-10">
                  <select id="e1" name="department" >
-                  <option value="computer engineering">computer engineering</option>
-                  <option value="electrical engineering" >electrical engineering</option>
-                  <option value="civil engineering">civil engineering</option>
-                  <option value="mechanical engineering">mechanical engineering</option>
-                  <option value="electronics and communication engineering">electronics and communication engineering</option>
+                  <option value="Information Technology Engineering">Information Technology Engineering</option>
+                  <option value="computer engineering">Computer Engineering</option>
+                  <option value="electrical engineering" >Electrical Engineering</option>
+                  <option value="civil engineering">Civil Engineering</option>
+                  <option value="mechanical engineering">Mechanical Engineering</option>
+                  <option value="electronics and communication engineering">Electronics and communication engineering</option>
                   </select>
                </div>
           </div>
@@ -134,7 +135,7 @@
                 <label class="col-sm-2 control-label" for="textinput">Class-ID</label>
                 <div class="col-sm-10">
                    <select id="e2" style="width:500px" name="cid" >'; 
-                    $query = "SELECT CLASS_ID FROM class ";
+                    $query = "SELECT id FROM class ";
                     $rs = mysqli_query($connection,$query);
                     $nm = mysqli_num_rows($rs);
                     for( $i=0; $i<$nm; $i++){
@@ -174,7 +175,7 @@
                 <label class="col-sm-2 control-label" for="textinput">Class-ID</label>
                 <div class="col-sm-10">
                    <select id="e3" style="width:500px" name="cid" id="cid">'; 
-                    $query = "SELECT CLASS_ID FROM class ";
+                    $query = "SELECT id FROM class ";
                     $rs = mysqli_query($connection,$query);
                     $nm = mysqli_num_rows($rs);
                     for( $i=0; $i<$nm; $i++){

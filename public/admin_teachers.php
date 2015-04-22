@@ -8,14 +8,17 @@
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $password = $_POST['password'];
-    $teacherid2 = $_POST['trid'];
+    if(isset($_POST['trid']))
+        $teacherid2 = $_POST['trid'];
 	$email = $_POST['email'];
 
 
     if(isset($_POST['add'])){
             //insert query
         if(!empty($teacherid)){
-            $query = "INSERT INTO teacher VALUES('$teacherid','$firstname $lastname','$password','$email')";
+            $query = "INSERT INTO `teacher`(`id`, `first_name`, `last_name`, `password` , `email`)  VALUES('$teacherid','$firstname' ,' $lastname','$password','$email')";
+            //echo $query;
+            
             $connections = mysqli_query($connection,$query);
             if($connections){
                 $msg = "New teacher record added!";
@@ -49,7 +52,7 @@
 
     else if(isset($_POST['delete'])){
         if(!empty($teacherid2)){
-            $query = "DELETE FROM teacher WHERE TR_ID = '$teacherid2'";
+            $query = "DELETE FROM teacher WHERE id = '$teacherid2'";
                 $connections = mysqli_query($connection,$query);
                 $msg = "Teacher record deleted successfully!";
 

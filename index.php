@@ -10,6 +10,8 @@
 
     <title>MIT-Moodle: Home</title>
 
+    <script src="template/js/jquery-1.11.0.js"></script>
+    
     <!-- Bootstrap core CSS -->
     <link href="template/css/bootstrap.min.css" rel="stylesheet">
 
@@ -40,9 +42,10 @@
             <p class="lead">Log in</p>
             <p class="lead">
             <div class="ui-group-buttons">
-                <button type="button" class="btn btn-primary btn-lg"><a href="template/teacher_signin.php">Faculty</a></button>
+            
+               <a href="template/teacher_signin.php"> <button type="button" href="template/teacher_signin.php" class="btn btn-primary btn-lg">Faculty</button></a>
                 <div class="or or-lg"></div>
-                <button type="button" class="btn btn-success btn-lg"><a href="template/students_signin.php">Student</a></button>
+               <a href="template/students_signin.php"><button type="button" class="btn btn-success btn-lg">Student</button></a>
             </div>
             </p>
           </div>

@@ -22,23 +22,21 @@
                           
                       $sid = $_POST['sid'];
 
-                      $query = "SELECT STUDENT_NAME, PASSWORD, CLASS_ID, CONTACT, EMAIL FROM `student` WHERE STUDENT_ID='$sid'";
+                      $query = "SELECT first_name,last_name, password, class_id, contact, email FROM `student` WHERE id='$sid'";
                       $run = mysqli_query($connection,$query);
-                      $row = mysqli_fetch_row($run);
-                      $tname = explode(' ', $row[0]);
-                      $first = $tname[0];
-                      $second = $tname[1];
+                      $row = mysqli_fetch_assoc($run);
+                      $tname = $row['first_name']." ".$row['last_name'];
                       
 
               echo '<div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">first name</label>
             <div class="col-sm-4">
-              <input type="text" name="firstname" id="firstname" value="'.$first.'" class="form-control">
+              <input type="text" name="firstname" id="firstname" value="'.$row['first_name'].'" class="form-control">
             </div>
 
             <label class="col-sm-2 control-label" for="textinput">last name</label>
             <div class="col-sm-4">
-              <input type="text" name="lastname" id="lastname" value="'.$second.'" class="form-control">
+              <input type="text" name="lastname" id="lastname" value="'.$row['last_name'].'" class="form-control">
             </div>
           </div>
 
@@ -46,7 +44,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Password</label>
             <div class="col-sm-7">
-              <input type="password" name="password" id="password" value="'.$row[1].'" class="form-control">
+              <input type="password" name="password" id="password" value="'.$row["password"].'" class="form-control">
             </div>
             <div class="checkbox col-sm-3" >
               <label>
@@ -60,8 +58,8 @@
 			 <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Class ID</label>
             <div class="col-sm-10">
-              <select id="e1" style="width:400px" name="classid" value="'.$row[2].'" >'; 
-                    $query = "SELECT CLASS_ID FROM class ";
+              <select id="e1" style="width:400px" name="classid">'; 
+                    $query = "SELECT id FROM class;";
                     $rs = mysqli_query($connection,$query);
                     $nm = mysqli_num_rows($rs);
                     for( $i=0; $i<$nm; $i++){
@@ -75,13 +73,13 @@
              <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Contact</label>
             <div class="col-sm-4">
-              <input type="text" name="contact" id="contact" value="'.$row[3].'" class="form-control">
+              <input type="text" name="contact" id="contact" value="'.$row['contact'].'" class="form-control">
             </div>
 			
              <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">E-mail</label>
             <div class="col-sm-4">
-              <input type="text" name="email" id="email" value="'.$row[4].'" class="form-control">
+              <input type="text" name="email" id="email" value="'.$row['email'].'" class="form-control">
             </div>';
 
           echo' <br><br><br> 
@@ -100,4 +98,8 @@
         ?>
         </div>
       </div>
+      <script>
+        $("#e1").select2({width:'resolve'});
+      </script>
+
 <?php require_once("footer.php"); ?>

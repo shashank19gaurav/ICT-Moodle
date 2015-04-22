@@ -2,7 +2,7 @@
 <!--footer-->
     <div class="push"></div>
     <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+      <p>project by <a href="#">Shashank - Divyansh - Pooja - Shruti</a></p>
     </div>
     <!--footer-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

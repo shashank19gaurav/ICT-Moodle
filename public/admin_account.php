@@ -22,6 +22,7 @@
                 $hashed_newpass = sha1($newpass);
 				$query2 = "UPDATE admin SET password='$hashed_newpass' WHERE username='$user'";
 				$connections2 = mysqli_query($connection,$query2);
+                echo $query;
                 $msg = "Password changed successfully!";
             }  
             else{

@@ -69,10 +69,10 @@
                                         
             echo "<tr>
                 <td>{$i}</td>
-                <td>{$teachinfo['TR_ID']}</td>
-                <td>{$teachinfo['TR_NAME']}</td>
-                <td>{$teachinfo['PASSWORD']}</td>
-                <td>{$teachinfo['EMAIL']}</td>
+                <td>{$teachinfo['id']}</td>
+                <td>{$teachinfo['first_name']} {$teachinfo['last_name']}</td>
+                <td>{$teachinfo['password']}</td>
+                <td>{$teachinfo['email']}</td>
                 </tr>";
             $i++;
           }

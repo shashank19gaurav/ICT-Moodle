@@ -49,7 +49,7 @@
 
     <?php
 
-       $qu = "SELECT CLASS_ID,DEPARTMENT,SEMESTER from class";
+       $qu = "SELECT id ,DEPARTMENT,SEMESTER from class";
        $run = mysqli_query($connection,$qu);
 
         echo' <div class="col-lg-6">';
@@ -70,7 +70,7 @@
                                         
             echo "<tr>
                 <td>{$i}</td>
-                <td>{$stuinfo['CLASS_ID']}</td>
+                <td>{$stuinfo['id']}</td>
                 <td>{$stuinfo['DEPARTMENT']}</td>
                 <td>{$stuinfo['SEMESTER']}</td>
                 </tr>";
@@ -89,7 +89,7 @@
 
 <div class="push"></div>
     <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+      <p>project by <a href="#">Shashank - Divyanash - Pooja</a></p>
     </div>
     <!--footer-->
 

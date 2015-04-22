@@ -126,7 +126,7 @@
                 <div class="col-sm-10">
                    <select id="e1" style="width:500px" name="trid" >'; 
                    
-                    $query = "SELECT TR_ID FROM teacher ";
+                    $query = "SELECT id FROM teacher ";
                     $rs = mysqli_query($connection,$query);
                     $nm = mysqli_num_rows($rs);
                     for( $i=0; $i<$nm; $i++){
@@ -167,7 +167,7 @@
                 <div class="col-sm-10">
                    <select id="e2" style="width:500px" name="trid" id="trid" >'; 
                                        
-                    $query = "SELECT TR_ID FROM teacher ";
+                    $query = "SELECT id FROM teacher ";
                     $rs = mysqli_query($connection,$query);
                     $nm = mysqli_num_rows($rs);
                     for( $i=0; $i<$nm; $i++){

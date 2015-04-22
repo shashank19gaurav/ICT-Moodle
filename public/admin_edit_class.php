@@ -21,8 +21,11 @@
 	
     if (isset($_POST['submit'])){
         if(!empty($class_id)){
-            $query = "UPDATE class SET class_id='$class_id', department='$dept', attendance='$attend', semester=$semester, results='$connectiones' ";
-			$query .= "WHERE class_id='{$class_id}'";
+            $query = "UPDATE class SET id='$class_id', department='$dept', attendance='$attend', semester=$semester, results='$connectiones' ";
+			$query .= "WHERE id='{$class_id}'";
+            
+           // echo $query;
+            
             mysqli_query($connection,$query);
 			
 			//$connections=1;

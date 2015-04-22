@@ -14,8 +14,8 @@
 	
     if (isset($_POST['submit'])){
         if(!empty($teacherid)){
-            $query = "UPDATE teacher SET tr_id='$teacherid', tr_name='$firstname $lastname', password='$password', email='$email' ";
-			$query .= "WHERE tr_id='{$teacherid}'";
+            $query = "UPDATE teacher SET id='$teacherid', first_name='$firstname' , last_name='$lastname', password='$password', email='$email' ";
+			$query .= "WHERE id='{$teacherid}'";
             mysqli_query($connection,$query);
 			$connections=1;
             if(mysqli_affected_rows($connection)){
