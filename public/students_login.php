@@ -9,13 +9,14 @@
     
     if(isset($_POST['submit']) && isset($user) && isset($password))
     {
-        $query = "SELECT STUDENT_ID,PASSWORD from student";
+        $hashed_password = sha1($password);
+        $query = "SELECT id, password from student WHERE id='$user' AND password='$hashed_password';";
+        echo $query;
         $rs = mysqli_query($connection, $query);
         $num = mysqli_num_rows($rs);
         confirm_query($rs);
         
-        for ($i=0; $i<$num ; $i++)
-        { 
+        if($num==1){ 
             $row = mysqli_fetch_row($rs);
             $hashed_password = sha1($password);
             echo $password;
@@ -29,6 +30,6 @@
         }
     } 
 
-    //redirect_to("../template/homepage.php");
+   redirect_to("../template/homepage.php");
     
 ?>

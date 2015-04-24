@@ -42,7 +42,7 @@
 
       <div class="blog-header">
         
-        <p class="blog-post-title">Add books </p>
+        <p class="blog-post-title">Add Books </p>
         <hr>
         <form class="form-horizontal" role="form" method="post" action="../public/teacher_books.php">
           <!-- Text input-->
@@ -59,7 +59,7 @@
                                 $cname = 0;
 
                             $tr = $_SESSION['user_id'];
-                            $query = "SELECT COURSE_ID FROM courses WHERE TR_ID='$tr'";
+                            $query = "SELECT id FROM courses WHERE teacherid='$tr'";
                             $rs = mysqli_query($connection,$query);
                             $nm = mysqli_num_rows($rs);
 
@@ -82,14 +82,14 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Book Name</label>
             <div class="col-sm-5">
-              <input type="text" name="bookname" placeholder="enter book title" class="form-control">
+              <input type="text" name="bookname" placeholder="Enter Book Title" class="form-control">
             </div>
           </div>
 
            <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Author Name</label>
             <div class="col-sm-5">
-              <input type="text" name="authname" placeholder="enter author name" class="form-control">
+              <input type="text" name="authname" placeholder="Enter Author Name" class="form-control">
             </div>
           </div>
 
@@ -126,7 +126,7 @@
                   $cname = 0;
 
               $tr = $_SESSION['user_id'];
-              $query = "SELECT COURSE_NAME FROM courses WHERE TR_ID='$tr'";
+              $query = "SELECT name FROM courses WHERE teacherid='$tr'";
               $rs = mysqli_query($connection,$query);
               $nm = mysqli_num_rows($rs);
               for( $i=0; $i<$nm; $i++)
@@ -158,11 +158,11 @@
         if(isset($_POST['coursename']))
         {
           $cname = $_POST['coursename'];
-          $fetch_id = "SELECT COURSE_ID from courses WHERE COURSE_NAME = '$cname'";
+          $fetch_id = "SELECT id from courses WHERE name = '$cname'";
           $rslt = mysqli_query($connection,$fetch_id);
           $cid = mysqli_fetch_row($rslt);
     
-          $qu = "SELECT BOOK_NAME, AUTHOR from books WHERE COURSE_ID= '$cid[0]'";
+          $qu = "SELECT book_name, author from books WHERE course_id = '$cid[0]'";
           $run = mysqli_query($connection,$qu);
           
           $n = mysqli_num_rows($run);
@@ -200,7 +200,7 @@
     <!--footer-->
     <div class="push"></div>
     <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+      <p>project by <a href="#">Shashank - Divyansh - Pooja - Shruti</a></p>
     </div>
     <!--footer-->
 

@@ -14,7 +14,7 @@
     if(isset($_POST['change']) && isset($old_pass) && isset($new_pass) && isset($cnfrm_pass) && ($new_pass == $cnfrm_pass))
     {
 
-        $query = "SELECT PASSWORD from `teacher` WHERE TR_ID = '$tr'";
+        $query = "SELECT password from `teacher` WHERE id = '$tr'";
         $rs = mysqli_query($connection,$query);
         $row = mysqli_fetch_row($rs);
         $hashed_old_pass = sha1($old_pass);
@@ -22,7 +22,7 @@
         if($hashed_old_pass == $row[0]) 
         {
             $hashed_new_pass = sha1($new_pass);
-            $query = "UPDATE `teacher` SET PASSWORD = '$hashed_new_pass' WHERE TR_ID = '$tr'";
+            $query = "UPDATE `teacher` SET password = '$hashed_new_pass' WHERE id = '$tr'";
             $rs = mysqli_query($connection,$query);
             if($rs)
             {

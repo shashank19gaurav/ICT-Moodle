@@ -19,7 +19,7 @@
         
          $msg = "New event added successfully";
         require 'teacher_header.php';
-        echo '<div class="container"><br /><br/><h1>'."$msg".'</h1></div>';
+        echo '<div class="container"><br/><br/><h1>'."$msg".'</h1></div>';
         require 'footer.php';
       
     }

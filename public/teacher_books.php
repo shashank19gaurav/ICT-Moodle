@@ -15,7 +15,7 @@
         //insert query
         if(!empty($course_id))
         {
-            $query = "INSERT INTO `books`(`COURSE_ID`, `BOOK_NAME`, `AUTHOR`) VALUES('$course_id','$book_name','$auth_name')";
+            $query = "INSERT INTO `books`(`course_id`, `book_name`, `author`) VALUES('$course_id','$book_name','$auth_name')";
             $rs = mysqli_query($connection,$query);
             if($rs)
             {

@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JMI-Moodle</title>
+    <title>MIT-Moodle</title>
 
     <script src="js/jquery-1.11.0.js"></script>
 
@@ -28,7 +28,7 @@
     <script src="js/select2/select2.js"></script>
     <script>
         $(document).ready(function() {
-        $("#e1").select2({width:'resolve'});
+            $("#e1").select2({width:'resolve'});
         });
     </script>
 
@@ -60,10 +60,10 @@
                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id ='$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?>
                     <b class="caret"></b></a>
@@ -145,7 +145,7 @@
                                 $cname = 0;
 
                           $id = $_SESSION['user_id']; 
-                          $query = "SELECT `COURSE_NAME` FROM `courses` WHERE `COURSE_ID` IN (select `COURSE_ID` from `enrolled in` where `STUDENT_ID` = '$id' )";
+                          $query = "SELECT `name` FROM `courses` WHERE `id` IN (select `COURSE_ID` from `enrolled_in` where `STUDENT_ID` = '$id' )";
                           $rs = mysqli_query($connection,$query);
                           $nm = mysqli_num_rows($rs);
                           for( $i=0; $i<$nm; $i++)
@@ -173,7 +173,7 @@
                   if(isset($_POST['coursename']))
                   {
                      $cname = $_POST['coursename'];
-                     $qu = "SELECT BOOK_NAME,AUTHOR from books where COURSE_ID in (select COURSE_ID from courses where COURSE_NAME='$cname')";
+                     $qu = "SELECT book_name, author from books where COURSE_ID in (select id from courses where name ='$cname')";
                      $run = mysqli_query($connection,$qu);
                      $bnum = mysqli_num_rows($run);
 
@@ -194,8 +194,8 @@
                                                       
                           echo "<tr>
                               <td>{$i}</td>
-                              <td>{$binfo['BOOK_NAME']}</td>
-                              <td>{$binfo['AUTHOR']}</td>
+                              <td>{$binfo['book_name']}</td>
+                              <td>{$binfo['author']}</td>
                               </tr>";
                           $i++;
                         }
@@ -208,7 +208,8 @@
                      else
                      {
                          $id = $_SESSION['user_id']; 
-                         $query = "SELECT COURSE_ID from `enrolled in` where STUDENT_ID = '$id' limit 1";
+                         $query = "SELECT COURSE_ID from `enrolled_in` where STUDENT_ID = '$id' limit 1";
+                         //echo $query;
                          $rslt = mysqli_query($connection,$query);
                          $cid = mysqli_fetch_row($rslt);
 
@@ -254,7 +255,7 @@
                     <div class="col-lg-12">
                     <div class="push"></div>
                     <div class="blog-footer">
-                      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+                        <?php include("footer_projectby.php"); ?>
                     </div>
                     </div>  
                 </div>

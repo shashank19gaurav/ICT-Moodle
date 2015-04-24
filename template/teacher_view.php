@@ -69,7 +69,7 @@
       <div class="container">
      
         <div class="blog-header">
-          <h1 class="blog-title">JMI Teacher's Blog</h1>
+          <h1 class="blog-title">MIT Teacher's Blog</h1>
           <p class="lead blog-description">Search specific courses to see the related posts.</p>
         </div>
         
@@ -86,7 +86,8 @@
                                 $cname = 0;
 
                             $tr = $_SESSION['user_id'];
-                            $query = "SELECT COURSE_NAME FROM courses WHERE TR_ID='$tr'";
+                            $query = "SELECT name FROM courses WHERE teacherid = '$tr'";
+                            //echo $query;
                             $rs = mysqli_query($connection,$query);
                             $nm = mysqli_num_rows($rs);
 
@@ -103,7 +104,7 @@
                       ?>
                       </select>
                       <span class="input-group-btn">
-                        <button class="btn btn-success" type="submit">Filter</button>
+                        <button class="btn btn-success" style="margin-left:10px;" type="submit">Filter</button>
                       </span>
                     </div>
                   </div>
@@ -119,7 +120,7 @@
             if(isset($_POST['coursename']))
             {
               $cname = $_POST['coursename'];
-              $qu = "SELECT COURSE_ID from courses WHERE COURSE_NAME='$cname'";
+              $qu = "SELECT id from courses WHERE COURSE_NAME='$cname'";
               $run = mysqli_query($connection,$qu);
               $cid = mysqli_fetch_row($run);
               
@@ -184,7 +185,7 @@
               $rslt = 0;
               //$cname = $_POST['coursename'];
               $tr = $_SESSION['user_id'];
-              $query = "SELECT POST_ID,CONTENT,TIME_STAMP from `posts` where COURSE_ID IN ( select COURSE_ID from `courses` where TR_ID = '$tr' ) order  by TIME_STAMP DESC LIMIT 10";
+              $query = "SELECT id,content,timestamp from `posts` where course_id IN ( select id from `courses` where teacherid = '$tr' ) order  by timestamp DESC LIMIT 10";
               $rslt = mysqli_query($connection,$query);
               $n = mysqli_num_rows($rslt);
               for($i=0; $i<$n; $i++)
@@ -195,7 +196,7 @@
                   echo  '<div class="blog-post">';
                   echo  '<p style="font-family:Eras Medium ITC; font-weight:550; font-size:20px">'.$row[1].'</p>';
                    echo '<p class="blog-post-meta" style="font-size:10px">POST#'.$row[0].' dated '.$row[2].'</p>';
-                    $qry = "SELECT CONTENT,USER,TIME_STAMP FROM `comments` WHERE POST_ID=$row[0] ORDER BY TIME_STAMP DESC";
+                    $qry = "SELECT content,user,timestamp FROM `comments` WHERE post_id=$row[0] ORDER BY timestamp DESC";
                     $p = mysqli_query($connection,$qry);
                     
                     $count = mysqli_num_rows($p);
@@ -244,7 +245,7 @@
         </div><!-- /.row -->
       <div class="push"></div>
       <div class="blog-footer">
-        <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+        <p>project by <a href="#">Shashank - Divyansh - Pooja - Shruti</a></p>
       </div>
       <!--footer-->
 

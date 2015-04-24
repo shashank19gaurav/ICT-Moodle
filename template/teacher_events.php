@@ -88,7 +88,7 @@
 <!--footer-->
     <div class="push"></div>
     <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+      <p>Project by <a href="#">Shashank - Divyansh - Shruti - Pooja</a></p>
     </div>
     <!--footer-->
  </body>

@@ -10,14 +10,14 @@
          $comment = $_POST['comment'];
          $user_id = $_SESSION['user_id'];
          $post_id = $_POST['postid'];
-         $query = "SELECT STUDENT_NAME FROM student where STUDENT_ID='$user_id'";
+         $query = "SELECT first_name, last_name FROM student where id = '$user_id'";
          $r = mysqli_query($connection,$query);
          $row = mysqli_fetch_row($r);
-         $user = $row[0];
+         $user = $row[0]." ".$row[1];
          if($_POST['reload']!="0")
           $_POST['coursename']= $_POST['reload'] ;
          //get back here after posts are handled.
-         $qry = "INSERT into comments (CONTENT, USER, USER_ID, POST_ID) VALUES ('$comment','$user','$user_id','$post_id')";
+         $qry = "INSERT into comments (content, user, user_id, post_id) VALUES ('$comment','$user','$user_id','$post_id')";
          $rs = mysqli_query($connection,$qry);
          if(!$rs){
           echo "error"; 
@@ -41,7 +41,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JMI-Moodle</title>
+    <title>MIT-Moodle</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -70,10 +70,10 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id = '$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -144,13 +144,13 @@
                             if(isset($_POST['coursename']))
                             {
                               $cname = $_POST['coursename'];
-                              $qu = "SELECT COURSE_ID from courses WHERE COURSE_NAME='$cname'";
+                              $qu = "SELECT id from courses WHERE name = '$cname'";
                               $run = mysqli_query($connection,$qu);
                               $cid = mysqli_fetch_row($run);
                               
-                              $query = "SELECT POST_ID,CONTENT,TIME_STAMP FROM posts WHERE COURSE_ID='$cid[0]' ORDER BY TIME_STAMP DESC";
+                              $query = "SELECT id, content , timestamp FROM posts WHERE course_id='$cid[0]' ORDER BY timestamp DESC";
                               $rs = mysqli_query($connection,$query);
-                              
+                              //echo $query;
                               $n = mysqli_num_rows($rs);
                               for($i=0; $i<$n; $i++)
                               {
@@ -162,7 +162,7 @@
                                 echo '<p class="blog-post-meta" style="font-size:10px"><span class="glyphicon glyphicon-time"></span> Posted on '.$row[2].'</p>';
                                 
 
-                                $qry = "SELECT CONTENT,USER,TIME_STAMP FROM `comments` WHERE POST_ID=$row[0] ORDER BY TIME_STAMP DESC";
+                                $qry = "SELECT content , user ,timestamp FROM `comments` WHERE post_id = $row[0] ORDER BY timestamp DESC";
                                 $p = mysqli_query($connection,$qry);
                                     
                                 $count = mysqli_num_rows($p);
@@ -206,7 +206,9 @@
                               $rslt = 0;
                               //$cname = $_POST['coursename'];
                               $id = $_SESSION['user_id'];
-                              $query = "SELECT POST_ID,CONTENT,TIME_STAMP from `posts` where COURSE_ID IN ( select COURSE_ID from `enrolled in` where STUDENT_ID = '$id' ) order  by TIME_STAMP DESC LIMIT 10";
+                              $query = "SELECT id, content, timestamp from `posts` where course_id IN ( select course_id from `enrolled_in` where student_id = '$id' ) order  by timestamp DESC LIMIT 10";
+                              
+                              //echo $query;
                               $rslt = mysqli_query($connection,$query);
                               $n = mysqli_num_rows($rslt);
                               for($i=0; $i<$n; $i++)
@@ -220,7 +222,7 @@
                                 echo '<p class="blog-post-meta" style="font-size:10px"><span class="glyphicon glyphicon-time"></span> Posted on '.$row[2].'</p>';
                                 
 
-                                $qry = "SELECT CONTENT,USER,TIME_STAMP FROM `comments` WHERE POST_ID=$row[0] ORDER BY TIME_STAMP DESC";
+                                $qry = "SELECT content, user, timestamp FROM `comments` WHERE post_id=$row[0] ORDER BY timestamp DESC";
                                 $p = mysqli_query($connection,$qry);
                                     
                                 $count = mysqli_num_rows($p);
@@ -286,7 +288,7 @@
                                 $cname = 0;
 
                             $id = $_SESSION['user_id']; 
-                            $query = "SELECT `COURSE_NAME` FROM `courses` WHERE `COURSE_ID` IN (select `COURSE_ID` from `enrolled in` where `STUDENT_ID` = '$id' )";
+                            $query = "SELECT `name` FROM `courses` WHERE `id` IN (select `course_id` from `enrolled_in` where `student_id` = '$id' )";
                             $rs = mysqli_query($connection,$query);
                             $nm = mysqli_num_rows($rs);
                             
@@ -315,7 +317,7 @@
                       <div class="col-lg-12">   
                                
                         <hr>
-                        <p align="center">Project by <a href="">Sushmita-Sharan-Ashar</a></p>
+                        <?php include("footer_projectby.php");?>
     
                     </div> 
 

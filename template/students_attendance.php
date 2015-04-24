@@ -43,10 +43,10 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id='$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -114,7 +114,8 @@
                     </div> 
                     <?php
                              $id= $_SESSION['user_id'];
-                             $qu = "SELECT ATTENDANCE from class where CLASS_ID in (SELECT CLASS_ID from student where STUDENT_ID = '$id')";
+                             $qu = "SELECT attendance from class where id in (SELECT CLASS_ID from student where id = '$id')";
+                             //echo $qu;
                              $run = mysqli_query($connection,$qu);
                              $path = mysqli_fetch_row($run);
                             
@@ -127,17 +128,16 @@
                              }
                              else
                              {
-                                trim($path[0]);
                                 $p = "../uploads/".$path[0];
-                                echo $p;
+                                //echo $p;
                                 //trim($p);
-                                echo '<img src="'.$p.'" style="margin-top:50px; margin-left:20px">';
+                                echo '<img src="'.$p.'" style="margin-top:50px; margin-left:20px;  height: 700px; width: 700px; ">';
                              }
                              
 
                         ?>
                         <hr>
-                        <p align="center">Project by <a href="">Sushmita-Sharan-Ashar</a></p>
+                        <?php include('footer_projectby.php'); ?>
     
                     </div>  
                 </div>

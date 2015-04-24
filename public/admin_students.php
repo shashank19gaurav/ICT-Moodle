@@ -17,9 +17,10 @@
             //insert query
         if(!empty($studentid))
         {
+            $hashed_password = sha1($password);
             if($lastname === "")
                 $firstname=$firstname." ";
-            $query = "INSERT INTO `student`( `first_name`, `last_name`, `password`, `email`, `contact`, `class_id`) VALUES('$firstname', '$lastname','$password','$email', '$contact', '$classid');";
+            $query = "INSERT INTO `student`( `id`,`first_name`, `last_name`, `password`, `email`, `contact`, `class_id`) VALUES('$studentid','$firstname', '$lastname','$hashed_password','$email', '$contact', '$classid');";
             //echo $query;
             $connections = mysqli_query($connection,$query);
             if($connections){

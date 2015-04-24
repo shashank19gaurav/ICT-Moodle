@@ -43,10 +43,10 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id='$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -114,8 +114,7 @@
                     </div> 
                         <img src="images/farm.jpg" onerror="this.src = 'images/contentUnavailable.png';" style="margin-top:20px; margin-left:20px" >
                     <hr>
-                        <p align="center">Project by <a href="">Sushmita-Sharan-Ashar</a></p>
-    
+                       <?php include("footer_projectby.php") ?>   
                     </div>  
                 </div>
                        

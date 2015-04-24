@@ -37,17 +37,17 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 
-                <a class="navbar-brand" href="students_dashboard.php">JMI-Moodle</a>
+                <a class="navbar-brand" href="students_dashboard.php">MIT-Moodle</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id = '$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?>
                     <b class="caret"></b></a>
@@ -131,7 +131,7 @@
                           <?php
                             $student= $_SESSION['user_id'];
                             
-                            $query="SELECT `COURSE_ID`,`COURSE_NAME` FROM `courses` ";
+                            $query="SELECT `id`,`name` FROM `courses` ";
                             $rs = mysqli_query($connection,$query);
                             $n = mysqli_num_rows($rs); 
 
@@ -139,7 +139,10 @@
                             {
                               $flag=0;  
                               $row = mysqli_fetch_row($rs);
-                              $qur = "SELECT `COURSE_ID` from `enrolled in` WHERE STUDENT_ID='$student'";
+                              $qur = "SELECT `course_id` from `enrolled_in` WHERE student_id='$student'";
+                              
+                              //echo $qur;
+                              
                               $res= mysqli_query($connection,$qur);
                               $count = mysqli_num_rows($res);
 
@@ -188,7 +191,7 @@
                     <div class="col-lg-12">
                     <div class="push"></div>
                     <div class="blog-footer">
-                      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+                      <?php include('footer_projectby.php');  ?>
                     </div>
                     </div>  
                 </div>

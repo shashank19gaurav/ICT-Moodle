@@ -16,7 +16,8 @@
     if(isset($_POST['add'])){
             //insert query
         if(!empty($teacherid)){
-            $query = "INSERT INTO `teacher`(`id`, `first_name`, `last_name`, `password` , `email`)  VALUES('$teacherid','$firstname' ,' $lastname','$password','$email')";
+            $hashed_password = sha1($password);
+            $query = "INSERT INTO `teacher`(`id`, `first_name`, `last_name`, `password` , `email`)  VALUES('$teacherid','$firstname' ,' $lastname','$hashed_password','$email')";
             //echo $query;
             
             $connections = mysqli_query($connection,$query);

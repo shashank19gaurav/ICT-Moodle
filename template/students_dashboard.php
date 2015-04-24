@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JMI-Moodle</title>
+    <title>MIT-Moodle</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 
-                <a class="navbar-brand" href="students_dashboard.php">JMI-Moodle</a>
+                <a class="navbar-brand" href="students_dashboard.php">MIT-Moodle</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -46,10 +46,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 
                    <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id='$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?> 
                     <b class="caret"></b></a>
@@ -116,10 +116,10 @@
                         <h1 class="page-header">
                              <small>Welcome <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id='$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?>  ! </small>
                         </h1>
@@ -132,9 +132,9 @@
                 </div>
 
                 <?php
-                    $query = "SELECT EVENT,EVENT_DATE,EVENT_TIME ";
+                    $query = "SELECT event,event_date,event_time ";
                     $query .= "FROM events ";
-                    $query .= "ORDER BY EVENT_DATE DESC";
+                    $query .= "ORDER BY Event_date DESC";
                     $result = mysqli_query($connection,$query) or die("Could not connect to the database<br />" . mysqli_error($connection));
                     $num_events = mysqli_num_rows($result);
                 ?>
@@ -163,9 +163,9 @@
                                                     
                                                     echo "<tr>
                                                         <td>{$i}</td>
-                                                        <td>{$event['EVENT']}</td>
-                                                        <td>{$event['EVENT_DATE']}</td>
-                                                        <td>{$event['EVENT_TIME']}</td>
+                                                        <td>{$event['event']}</td>
+                                                        <td>{$event['event_date']}</td>
+                                                        <td>{$event['event_time']}</td>
                                                     </tr>";
                                                     $i++;
                                                 }
@@ -205,9 +205,11 @@
                             </div>-->
                         </div>
                     <hr>
-                    <footer class="site-footer">
-                        <p align="center">Project by <a href="">Sushmita-Sharan-Ashar</a></p>
-                    </footer>
+                    
+                    <?php 
+                        include("footer_projectby.php");
+                    ?>
+                    
                     </div>  
                 </div>
                        

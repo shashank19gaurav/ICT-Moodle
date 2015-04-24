@@ -18,7 +18,7 @@
   </head>
 
 
-  <body>
+  <body style="background:#006699;">
 
 <!--sign in -->
     
@@ -27,11 +27,11 @@
         <div class="col-md-12"> 
             <div class="wrap">
                 <p class="form-title" >
-                    Sign In</p>
+                    Login</p>
                 <form class="login" method="POST" action="../public/teacher_login.php">
-                <input type="text" name="username" placeholder="Enter Teacher ID" />
-                <input type="password" name="password" placeholder="Password" />
-                <input type="submit" name="submit" value="Sign In" class="btn btn-success btn-sm" />
+                <input type="text" name="username" style="color:black;background:white;" placeholder="Enter Teacher ID" />
+                <input type="password" name="password" style="color:black;background:white;" placeholder="Password" />
+                <input type="submit" name="submit" value="Login" class="btn btn-success btn-sm" />
                 </form>
             </div>
         </div>

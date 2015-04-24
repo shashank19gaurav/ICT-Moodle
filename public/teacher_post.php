@@ -10,16 +10,17 @@
 
     if(isset($content) && isset($course_name) )
     {
-        $query = "SELECT COURSE_ID from courses where COURSE_NAME = '$course_name'";
+        $query = "SELECT id from courses where name = '$course_name'";
         $cn = mysqli_query($connection,$query);
         $cid = mysqli_fetch_row($cn);
 
-        $query = "INSERT INTO posts(CONTENT,COURSE_ID) VALUES ('$content','$cid[0]')";
+        $query = "INSERT INTO posts(content,course_id) VALUES ('$content','$cid[0]')";
         $rs = mysqli_query($connection,$query);
 
         if($rs)
         {
-            redirect_to("../template/teacher_post.php");
+            $msg = "Post Added Successfully";
+            //redirect_to("../template/teacher_post.php");
         }
         else
         {

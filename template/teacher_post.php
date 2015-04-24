@@ -55,12 +55,12 @@
                   
                  <?php 
                     $tr = $_SESSION['user_id'];
-                    $query = "SELECT COURSE_NAME FROM courses WHERE TR_ID='$tr'";
+                    $query = "SELECT name FROM courses WHERE teacherid='$tr'";
                     $rs = mysqli_query($connection,$query);
                     $nm = mysqli_num_rows($rs);
                     for( $i=0; $i<$nm; $i++){
                       $row = mysqli_fetch_row($rs);
-            echo '<option>'.$row[0].'</option>';
+                            echo '<option>'.$row[0].'</option>';
                       } ?>
                   </select>
                </div>
@@ -80,7 +80,7 @@
     <!--footer-->
     <div class="push"></div>
     <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+      <p>Project by <a href="#">Shashank - Divyansh - Pooja - Shruti</a></p>
     </div>
     <!--footer-->
     <script src="../../dist/js/bootstrap.min.js"></script>

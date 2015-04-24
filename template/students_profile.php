@@ -46,10 +46,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 
                    <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id ='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id ='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id ='$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?> 
                     <b class="caret"></b></a>
@@ -118,11 +120,11 @@
                         <div class="panel-heading">';
                         
                         $id= $_SESSION['user_id'];
-                        $qur = "SELECT * from student where STUDENT_ID = '$id'";
+                        $qur = "SELECT * from student where id = '$id'";
                         $res= mysqli_query($connection,$qur);
                         $row = mysqli_fetch_row($res);
                         
-                        echo' <h3 class="panel-title">'.$row[1].'</h3>
+                        echo' <h3 class="panel-title">'.$row[1]." ".$row[2].'</h3>
                         </div>
                         <div class="panel-body">
                           <div class="row">
@@ -132,7 +134,7 @@
                                   <tr>
                                     <td>Department:</td>';
                                     
-                                    $query = "SELECT DEPARTMENT from class where CLASS_ID in (SELECT CLASS_ID from student where STUDENT_ID = '$id')";
+                                    $query = "SELECT DEPARTMENT from class where id in (SELECT CLASS_ID from student where id = '$id')";
                                     $rslt= mysqli_query($connection,$query);
                                     $dept = mysqli_fetch_row($rslt);
                         
@@ -145,7 +147,7 @@
                                   <tr>
                                     <td>Semester</td>';
 
-                                        $query = "SELECT SEMESTER from class where CLASS_ID in (SELECT CLASS_ID from student where STUDENT_ID = '$id')";
+                                        $query = "SELECT SEMESTER from class where id in (SELECT CLASS_ID from student where id = '$id')";
                                         $rslt= mysqli_query($connection,$query);
                                         $sem = mysqli_fetch_row($rslt);
 
@@ -153,11 +155,11 @@
                                   </tr>
                                     <tr>
                                     <td>Contact</td>
-                                    <td>'.$row[4].'</td>
+                                    <td>'.$row[5].'</td>
                                   </tr>
                                   <tr>
                                     <td>Email</td>
-                                    <td>'.$row[5].'</td>
+                                    <td>'.$row[4].'</td>
                                   </tr>
                                     </td>
                                        
@@ -178,7 +180,7 @@
                 </div>
                 <div class="push"></div>
                 <div class="blog-footer">
-                  <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+                  <?php include("footer_projectby.php"); ?>
                 </div>
 
             </div>

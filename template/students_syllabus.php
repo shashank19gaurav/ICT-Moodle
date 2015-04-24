@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JMI-Moodle</title>
+    <title>MIT-Moodle</title>
 
     <script src="js/jquery-1.11.0.js"></script>
 
@@ -60,10 +60,10 @@
                <li class="dropdown">
                     <a  class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id='$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
-                        echo $name[0];
+                        echo $name[0]." ".$name[1];
                         
                     ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -137,7 +137,7 @@
                           <?php 
 
                           $tr = $_SESSION['user_id'];
-                          $query = "SELECT COURSE_ID FROM `enrolled in` WHERE STUDENT_ID='$tr'";
+                          $query = "SELECT COURSE_ID FROM `enrolled_in` WHERE STUDENT_ID='$tr'";
                           $rs = mysqli_query($connection,$query);
                           $nm = mysqli_num_rows($rs);
 
@@ -174,7 +174,7 @@
                           if(isset($_POST['courseid']))
                           {
                              $cid = $_POST['courseid'];
-                             $qu = "SELECT SYLLABUS from courses where COURSE_ID ='$cid'";
+                             $qu = "SELECT syllabus from courses where id ='$cid'";
                              $run = mysqli_query($connection,$qu);
                              $path = mysqli_fetch_row($run);
 
@@ -195,7 +195,7 @@
                             {
 
                                  $id = $_SESSION['user_id'];
-                                 $query = "SELECT SYLLABUS from courses where COURSE_ID in (select COURSE_ID from `enrolled in` where STUDENT_ID = '$id') limit 1";
+                                 $query = "SELECT SYLLABUS from courses where id in (select COURSE_ID from `enrolled_in` where STUDENT_ID = '$id') limit 1";
                                  $rslt = mysqli_query($connection,$query);
                                  $path = mysqli_fetch_row($rslt);
 
@@ -208,7 +208,8 @@
                                  else
                                  {
                                     $path[0] = "../uploads/".$path[0];
-                                    echo '<img src="'.$path[0].'" style="margin-top:50px; margin-left:20px">'; 
+                                    //echo $path[0];
+                                    echo '<img src="'.$path[0].'" style="margin-top:50px; margin-left:20px ; height:300px; width:300px;">'; 
                                  }
                                  
                             }
@@ -216,8 +217,8 @@
                     ?>
 
                     <hr>
-                    <p align="center">Project by <a href="">Sushmita-Sharan-Ashar</a></p>
-
+                  
+                    <?php include('footer_projectby.php'); ?>
     
                     </div>  
                 </div>

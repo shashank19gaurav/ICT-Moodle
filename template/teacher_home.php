@@ -40,18 +40,19 @@
     </div>
     <?php
       $user_id = $_SESSION['user_id'];
-      $qu = "SELECT TR_NAME from `teacher` where TR_ID = '$user_id'";
+      $qu = "SELECT first_name,last_name from `teacher` where id = '$user_id'";
       $run = mysqli_query($connection,$qu);
       $row = mysqli_fetch_row($run);
       echo '<div class="container">';
-      echo '<h2 class="blog-title" style="font-size:40px">Welcome '.$row[0].' !</h2>';  
+      echo '<h2 class="blog-title" style="font-size:40px">Welcome '.$row[0].' '.$row[1].' !</h2>';  
       echo'</div>';
       ?>
 
     <!--footer-->
     <div class="push"></div>
+    <div class="push"></div>
     <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+      <p>project by <a href="#">Shashank - Divyansh - Shruti - Pooja</a></p>
     </div>
     <!--footer-->
     <script src="../../dist/js/bootstrap.min.js"></script>

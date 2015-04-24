@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JMI-Moodle</title>
+    <title>MIT-Moodle</title>
 
     <script src="js/jquery-1.11.0.js"></script>
 
@@ -28,7 +28,7 @@
     <script src="js/select2/select2.js"></script>
     <script>
         $(document).ready(function() {
-        $("#e1").select2({width:'resolve'});
+            $("#e1").select2({width:'resolve'});
         });
     </script>
     
@@ -61,7 +61,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  <?php 
                         $id = $_SESSION['user_id'];
-                        $query = "SELECT STUDENT_NAME FROM student WHERE STUDENT_ID='$id'";
+                        $query = "SELECT first_name, last_name FROM student WHERE id='$id'";
                         $rs = mysqli_query($connection,$query);
                         $name=mysqli_fetch_row($rs);
                         echo $name[0];
@@ -145,7 +145,7 @@
                                 $cname = 0;
 
                             $id = $_SESSION['user_id']; 
-                            $query = "SELECT `COURSE_NAME` FROM `courses` WHERE `COURSE_ID` IN (select `COURSE_ID` from `enrolled in` where `STUDENT_ID` = '$id' )";
+                            $query = "SELECT `name` FROM `courses` WHERE `id` IN (select `COURSE_ID` from `enrolled_in` where `STUDENT_ID` = '$id' )";
                             $rs = mysqli_query($connection,$query);
                             $nm = mysqli_num_rows($rs);
                             
@@ -170,11 +170,11 @@
                   if(isset($_POST['coursename']))
                   {
                      $cname = $_POST['coursename'];
-                     $qu = "SELECT TR_NAME,EMAIL from teacher where TR_ID in (select TR_ID from courses where COURSE_NAME='$cname')";
+                     $qu = "SELECT first_name ,EMAIL from teacher where id in (select teacherid from courses where name='$cname')";
                      $run = mysqli_query($connection,$qu);
                      $tname = mysqli_fetch_row($run);
 
-                     $q = "SELECT COURSE_ID from courses where COURSE_NAME='$cname'";
+                     $q = "SELECT id from courses where name = '$cname'";
                      $rslt = mysqli_query($connection,$q);
                      $cinfo = mysqli_fetch_row($rslt);
 
@@ -187,7 +187,7 @@
                     echo' </div>';
 
 
-                    $qu = "SELECT STUDENT_ID from `enrolled in` where COURSE_ID in (select COURSE_ID from courses where COURSE_NAME='$cname')";
+                    $qu = "SELECT STUDENT_ID from `enrolled_in` where COURSE_ID in (select id from courses where name='$cname')";
                      $run = mysqli_query($connection,$qu);
                      $num = mysqli_num_rows($run);
 
@@ -208,17 +208,17 @@
                       { 
 
                         $sid = mysqli_fetch_row($run);
-                        $query = "SELECT STUDENT_ID,STUDENT_NAME,CONTACT,EMAIL from student where STUDENT_ID = '$sid[0]'";
+                        $query = "SELECT id, first_name, last_name, contact, email from student where id = '$sid[0]'";
                         $result = mysqli_query($connection,$query);
                         while($sdetail = mysqli_fetch_array($result))
                         {
                                                       
                           echo "<tr>
                               <td>{$i}</td>
-                              <td>{$sdetail['STUDENT_ID']}</td>
-                              <td>{$sdetail['STUDENT_NAME']}</td>
-                              <td>{$sdetail['CONTACT']}</td>
-                              <td>{$sdetail['EMAIL']}</td>
+                              <td>{$sdetail['id']}</td>
+                              <td>{$sdetail['first_name']} {$sdetail['last_name']}</td>
+                              <td>{$sdetail['contact']}</td>
+                              <td>{$sdetail['email']}</td>
                           </tr>";
                           $i++;
                         }
@@ -236,11 +236,11 @@
                      {
 
                          $id = $_SESSION['user_id']; 
-                         $qu = "SELECT COURSE_NAME,COURSE_ID from courses where COURSE_ID in (select COURSE_ID from `enrolled in` where STUDENT_ID = '$id') limit 1";
+                         $qu = "SELECT name, id from courses where id in (select COURSE_ID from `enrolled_in` where STUDENT_ID = '$id') limit 1";
                          $run = mysqli_query($connection,$qu);
                          $cinfo = mysqli_fetch_row($run);
 
-                         $query = "SELECT TR_NAME,EMAIL from teacher where TR_ID in (select TR_ID from courses where COURSE_ID = '$cinfo[1]')";
+                         $query = "SELECT first_name, last_name, email from teacher where id in (select teacherid from courses where id = '$cinfo[1]')";
                          $rslt = mysqli_query($connection,$query);
                          $tname = mysqli_fetch_row($rslt);
 
@@ -252,7 +252,8 @@
                         echo' </div>';
 
 
-                         $q= "SELECT STUDENT_ID from `enrolled in` where COURSE_ID ='$cinfo[1]'";
+                         $q= "SELECT STUDENT_ID from `enrolled_in` where COURSE_ID ='$cinfo[1]'";
+                         
                          $result = mysqli_query($connection,$q);
                          $num = mysqli_num_rows($result);
 
@@ -274,7 +275,7 @@
                           { 
 
                             $sid = mysqli_fetch_row($result);
-                            $query = "SELECT STUDENT_ID,STUDENT_NAME,CONTACT,EMAIL from student where STUDENT_ID = '$sid[0]'";
+                            $query = "SELECT id, first_name, last_name , contact, email from student where id = '$sid[0]'";
                             $run = mysqli_query($connection,$query);
                             
                             while($sdetail =  mysqli_fetch_array($run))
@@ -282,10 +283,10 @@
                                                          
                               echo"<tr>
                                   <td>{$i}</td>
-                                  <td>{$sdetail['STUDENT_ID']}</td>
-                                  <td>{$sdetail['STUDENT_NAME']}</td>
-                                  <td>{$sdetail['CONTACT']}</td>
-                                  <td>{$sdetail['EMAIL']}</td>
+                                  <td>{$sdetail['id']}</td>
+                                  <td>{$sdetail['first_name']}{$sdetail['last_name']}</td>
+                                  <td>{$sdetail['contact']}</td>
+                                  <td>{$sdetail['email']}</td>
                               </tr>";
                               $i++;
                             }
@@ -311,7 +312,7 @@
                     <!--footer-->
                     <div class="push"></div>
                     <div class="blog-footer">
-                      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+                        <?php include("footer_projectby.php"); ?>
                     </div>
                     <!--footer-->
                     </div>  
