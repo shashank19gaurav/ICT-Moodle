@@ -4,17 +4,17 @@
     include_once("../includes/session.php");
     include_once("../includes/connection.php");
     
- 	$file_name = $_FILES['syllabus']['name'];
-	$file_type = $_FILES['syllabus']['type'];
-	$file_tmp_name = $_FILES['syllabus']['tmp_name'];
-	$location = '../uploads/';
+ 	// $file_name = $_FILES['syllabus']['name'];
+	// $file_type = $_FILES['syllabus']['type'];
+	// $file_tmp_name = $_FILES['syllabus']['tmp_name'];
+	// $location = '../uploads/';
 	
 
 	
     $courseid = $_POST['courseid'];
     $coursename = $_POST['coursename'];
     $teacherid = $_POST['trid'];
-    $syllabus = $file_name;
+   // $syllabus = $file_name;
     $courseid2 = $_POST['cid'];
 
 
@@ -22,17 +22,18 @@
         
             //insert query
         if(!empty($courseid)){
-            $query = "INSERT INTO courses VALUES('$courseid','$coursename','$syllabus','$teacherid')";
+            $query = "INSERT INTO courses VALUES('$courseid','$coursename','','$teacherid')";
+            //echo $query;
 			$connections = mysqli_query($connection,$query);
 			if($connections){
 				$msg = "New course record added!";
 				if(isset($file_name)){
 					if(!empty($file_name)){
-						move_uploaded_file($file_tmp_name,$location.$file_name);
+						//move_uploaded_file($file_tmp_name,$location.$file_name);
 					}
 				}	
 				else{
-					$msg = "Error! File not uploaded. But the new course has been added.";
+					$msg = "New course record added!";
 				} 
             }  
             else{

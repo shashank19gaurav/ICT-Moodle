@@ -41,15 +41,17 @@
 
     <div class="container">
       <div class="blog-header" style="text-align:center;">
-        <h1 class="blog-title">Welcome Admin!</h1>
+        <h1 class="blog-title">Welcome Administrator!</h1>
+        
         <p class="lead blog-description">Maintenance center of MIT-Moodle is at your disposal.</p>
       </div>
     </div><!-- /.container -->
 
     <!--footer-->
     <div class="push"></div>
-    <div class="blog-footer">
-      <p>Project by :<a href="#">Shashank-Divyansh-Pooja-Shruti</a></p>
+    <div class="push"></div>
+    <div style="bottom:500px;!important">
+      <?php include("footer_projectby.php"); ?>
     </div>
     <!--footer-->
     <script src="../../dist/js/bootstrap.min.js"></script>

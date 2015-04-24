@@ -26,10 +26,14 @@
     
     <div class="container">
     <div class="row">
-        <div class="col-md-12"> 
+        <div class="col-md-2">
+            <img src="images/manipal_logo.png" style="height:200px;width:200px;">
+           
+        </div>
+        <div class="col-md-8"> 
             <div class="wrap">
                 <p class="form-title" >
-                    Login</p>
+                   Admin Login</p>
                 <form class="login" method="POST" action="../public/admin_login.php">
                 <input type="text" style="color:black;background:white;" name="username" placeholder="Username" /><br/>
                 <input type="password" style="color:black;background:white;" name="password" placeholder="Password" />

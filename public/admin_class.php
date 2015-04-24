@@ -6,23 +6,24 @@
     
 
     if(isset($_POST['add'])){
-        $file_name1 = $_FILES['attendance']['name'];
-        $file_type1 = $_FILES['attendance']['type'];
-        $file_tmp_name1 = $_FILES['attendance']['tmp_name'];
-        $file_name2 = $_FILES['results']['name'];
-        $file_type2 = $_FILES['results']['type'];
-        $file_tmp_name2 = $_FILES['results']['tmp_name'];
-        $location = '../uploads/';
+        // $file_name1 = $_FILES['attendance']['name'];
+        // $file_type1 = $_FILES['attendance']['type'];
+        // $file_tmp_name1 = $_FILES['attendance']['tmp_name'];
+        // $file_name2 = $_FILES['results']['name'];
+        // $file_type2 = $_FILES['results']['type'];
+        // $file_tmp_name2 = $_FILES['results']['tmp_name'];
+        // $location = '../uploads/';
         
         $class_id = $_POST['classid'];
         $dept = $_POST['department'];
-        $attend = $file_name1;
+        //$attend = $file_name1;
         $semester = $_POST['sem'];
-        $connectiones = $file_name2;
+        //$connectiones = $file_name2;
             //insert query
         if(!empty($class_id)){
-            $query = "INSERT INTO `class`(`id`, `department`, `semester`, `attendence`, `results`) VALUES('$class_id','$dept','$semester','$attend','$connectiones')";
+            $query = "INSERT INTO `class`(`id`, `department`, `semester`, `attendance`, `results`) VALUES('$class_id','$dept','$semester','','')";
             $connections = mysqli_query($connection,$query);
+//            echo $query;
             if($connections){
                 $msg = "New class record added!";
 				if(isset($file_name1)){
@@ -31,12 +32,12 @@
 					}
 				}	
 				else{
-					$msg = "Error! Attendance file not uploaded. But the new course has been added.";
+					$msg = "New class record added!";
 				} 
 				
 				if(isset($file_name2)){
 					if(!empty($file_name2)){
-						move_uploaded_file($file_tmp_name2,$location.$file_name2);
+						//move_uploaded_file($file_tmp_name2,$location.$file_name2);
 					}
 				}	
 				else{

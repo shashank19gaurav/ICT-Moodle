@@ -10,7 +10,7 @@
 	
 	 if(isset($_POST['delete_post'])){
         if(!empty($postid)){
-            $query = "DELETE FROM posts WHERE POST_ID = '$postid'";
+            $query = "DELETE FROM posts WHERE id = '$postid'";
                 $connections = mysqli_query($connection,$query);
                 $msg = "Post deleted successfully!";
 
@@ -22,7 +22,7 @@
 	
 	 if(isset($_POST['delete_comment'])){
         if(!empty($commentid)){
-            $query = "DELETE FROM comments WHERE COMMENT_ID = '$commentid'";
+            $query = "DELETE FROM comments WHERE id = '$commentid'";
                 $connections = mysqli_query($connection,$query);
                 $msg = "Comment deleted successfully!";
 

@@ -55,12 +55,16 @@
 
     <div class="container">
         <div class="row">
+        
+        <h4><a href="admin_view_classes.php" style="float:right;">View Current Classes</a></h4>
+        
+        
     <div class="col-md-10 col-md-offset-1">
       <form class="form-horizontal" role="form" method="post" action="../public/admin_class.php" enctype="multipart/form-data">
         <fieldset>
 
           <!-- Form Name -->
-          <legend>Add New Class record | <a href="admin_view_classes.php">view</a></legend>
+          <legend>Add New Class Record</legend>
 
           <!-- Text input-->
           <div class="form-group">
@@ -85,13 +89,7 @@
           </div>
 
           <!-- Text input-->
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Attendance</label>
-            <div class="col-sm-10">
-               <input type="file" name="attendance">    
-            </div>
-          </div>
-
+          
           <!-- Text input-->
           <div class="form-group">
            <label class="col-sm-2 control-label" for="textinput">Semester</label>
@@ -109,12 +107,7 @@
             </div>
           </div>
 <!-- Text input-->
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Results</label>
-            <div class="col-sm-10">
-                 <input type="file" name="results">
-              </div>
-          </div>
+          
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -129,7 +122,7 @@
         
         <fieldset>
         <form class="form-horizontal" role="form" method="post" action="../public/admin_class.php" >
-          <legend>Delete class record | <a href="admin_view_classes.php">view</a></legend>
+          <legend>Delete Class Record</legend>
            <?php
             echo '<div class="form-group">
                 <label class="col-sm-2 control-label" for="textinput">Class-ID</label>
@@ -204,9 +197,9 @@
     </div>
 <!--footer-->
     <div class="push"></div>
-    <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
-    </div>
+       <div style="bottom:500px;!important">
+          <?php include("footer_projectby.php"); ?>
+        </div>
     <!--footer-->
 
    <script src="../../dist/js/bootstrap.min.js"></script>

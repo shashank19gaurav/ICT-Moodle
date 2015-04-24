@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="Download Link" content="">
     
     <title>Teacher: Books</title>
 
@@ -30,7 +30,7 @@
           <a class="blog-nav-item" href="teacher_home.php">Home</a>
           <a class="blog-nav-item" href="teacher_view.php">View post</a>
           <a class="blog-nav-item" href="teacher_post.php">New Post</a>
-          <a class="blog-nav-item active" href="teacher_books.php">Books</a>
+          <a class="blog-nav-item active" href="teacher_books.php">Materials</a>
           <a class="blog-nav-item" href="teacher_events.php">Events</a>
           <a class="blog-nav-item" href="teacher_account.php">MyAccount</a>
           <a class="blog-nav-item" href="../public/logout.php">Logout</a>
@@ -42,7 +42,7 @@
 
       <div class="blog-header">
         
-        <p class="blog-post-title">Add Books </p>
+        <p class="blog-post-title">Add Materials </p>
         <hr>
         <form class="form-horizontal" role="form" method="post" action="../public/teacher_books.php">
           <!-- Text input-->
@@ -80,16 +80,16 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Book Name</label>
+            <label class="col-sm-2 control-label" for="textinput">Material </label>
             <div class="col-sm-5">
-              <input type="text" name="bookname" placeholder="Enter Book Title" class="form-control">
+              <input type="text" name="bookname" placeholder="Enter Material" class="form-control">
             </div>
           </div>
 
            <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Author Name</label>
+            <label class="col-sm-2 control-label" for="textinput">Download Link </label>
             <div class="col-sm-5">
-              <input type="text" name="authname" placeholder="Enter Author Name" class="form-control">
+              <input type="text" name="authname" placeholder="Enter Download Link" class="form-control">
             </div>
           </div>
 
@@ -106,7 +106,7 @@
       <div class="row">
 
        <div class="col-lg-6">
-        <h4 >Books/Reference</h4> <!--make recent posts to active course-->
+        <h4 >Materials/Reference</h4> <!--make recent posts to active course-->
         </div>
         <div class="col-md-4">
             
@@ -143,7 +143,7 @@
 
              </select>
             <span class="input-group-btn">
-              <button class="btn btn-success" type="submit">Select Course</button>
+              <button class="btn btn-success" type="submit" style="left:14px;">Select Course</button>
             </span>
           
           </form>
@@ -171,8 +171,8 @@
             echo' <thead>';
             echo' <tr class="success">';
             echo' <th>#</th>';
-            echo' <th>BOOK NAME</th>';
-            echo' <th>AUTHOR</th>';
+            echo' <th>Material</th>';
+            echo' <th>Download Link</th>';
             echo' </tr>';
             echo' </thead>';
             echo' <tbody>';
@@ -182,7 +182,7 @@
               echo "<tr>
                       <td>{$i}</td>
                       <td>{$row[0]}</td>
-                      <td>{$row[1]}</td>
+                      <td><a href='/{$row[1]}'>Click Here</a></td>
                       </tr>";
                   $i++;                     
             }
@@ -199,8 +199,8 @@
 
     <!--footer-->
     <div class="push"></div>
-    <div class="blog-footer">
-      <p>project by <a href="#">Shashank - Divyansh - Pooja - Shruti</a></p>
+    <div style="bottom:500px;!important">
+      <?php include("footer_projectby.php"); ?>
     </div>
     <!--footer-->
 

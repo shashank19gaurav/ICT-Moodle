@@ -10,10 +10,10 @@
         $comment = $_POST['comment'];
          $user_id = $_SESSION['user_id'];
          $post_id = $_POST['postid'];
-         $query = "SELECT TR_NAME FROM teacher where TR_ID='$user_id'";
+         $query = "SELECT first_name, last_name FROM teacher where id='$user_id'";
          $r = mysqli_query($connection,$query);
          $row = mysqli_fetch_row($r);
-         $user = $row[0];
+         $user = $row[0]." ".$row[1];
          if($_POST['reload']!="0")
           $_POST['coursename']= $_POST['reload'] ;
          //get back here after posts are handled.
@@ -56,7 +56,7 @@
             <a class="blog-nav-item" href="teacher_home.php">Home</a>
             <a class="blog-nav-item active" href="teacher_view.php">View post</a>
             <a class="blog-nav-item" href="teacher_post.php">New Post</a>
-            <a class="blog-nav-item" href="teacher_books.php">Books</a>
+            <a class="blog-nav-item" href="teacher_books.php">Materials</a>
             <a class="blog-nav-item" href="teacher_events.php">Events</a>
             <a class="blog-nav-item" href="teacher_account.php">MyAccount</a>
             <a class="blog-nav-item" href="../public/logout.php">Logout</a>
@@ -69,7 +69,7 @@
       <div class="container">
      
         <div class="blog-header">
-          <h1 class="blog-title">MIT Teacher's Blog</h1>
+          <h1 class="blog-title">Teacher's Forum</h1>
           <p class="lead blog-description">Search specific courses to see the related posts.</p>
         </div>
         
@@ -120,11 +120,11 @@
             if(isset($_POST['coursename']))
             {
               $cname = $_POST['coursename'];
-              $qu = "SELECT id from courses WHERE COURSE_NAME='$cname'";
+              $qu = "SELECT id from courses WHERE name='$cname'";
               $run = mysqli_query($connection,$qu);
               $cid = mysqli_fetch_row($run);
               
-              $query = "SELECT POST_ID,CONTENT,TIME_STAMP FROM posts WHERE COURSE_ID='$cid[0]' ORDER BY TIME_STAMP DESC";
+              $query = "SELECT id,content,timestamp FROM posts WHERE course_id='$cid[0]' ORDER BY timestamp DESC";
               $rs = mysqli_query($connection,$query);
               
               $n = mysqli_num_rows($rs);
@@ -136,7 +136,7 @@
                  echo  '<div class="blog-post">';
                   echo  '<p style="font-family:Eras Medium ITC; font-weight:550; font-size:20px">'.$row[1].'</p>';
                    echo '<p class="blog-post-meta" style="font-size:10px">POST#'.$row[0].' dated '.$row[2].'</p>';
-                   $qry = "SELECT CONTENT,USER,TIME_STAMP FROM `comments` WHERE POST_ID=$row[0] ORDER BY TIME_STAMP DESC";
+                   $qry = "SELECT CONTENT,USER,TIMESTAMP FROM `comments` WHERE POST_ID=$row[0] ORDER BY TIMESTAMP DESC";
                     $p = mysqli_query($connection,$qry);
                     
                     $count = mysqli_num_rows($p);
@@ -244,8 +244,8 @@
          
         </div><!-- /.row -->
       <div class="push"></div>
-      <div class="blog-footer">
-        <p>project by <a href="#">Shashank - Divyansh - Pooja - Shruti</a></p>
+      <div style="bottom:500px;!important">
+        <?php include("footer_projectby.php"); ?>
       </div>
       <!--footer-->
 

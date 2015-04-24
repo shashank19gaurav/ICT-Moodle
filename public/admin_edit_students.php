@@ -15,7 +15,8 @@
     if (isset($_POST['submit'])){
         if(!empty($studentid)){
             if($lastname === "")
-                $firstname=$firstname." ";
+                
+            $firstname=$firstname." ";
             $query = "UPDATE student SET id = '$studentid', first_name ='$firstname', last_name = '$lastname', password='$password', class_id='$classid', contact='$contact', email='$email' ";
 			$query .= "WHERE id='{$studentid}'";
             mysqli_query($connection,$query);

@@ -15,6 +15,7 @@
 
     <title>Admin: Students</title>
     <script src="js/jquery-1.11.0.js"></script>
+    
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -59,12 +60,15 @@
 
     <div class="container">
         <div class="row">
+        
+        <h4><a href="admin_view_students.php" style="float:right;">View Current Students</a></h4>
+        
     <div class="col-md-10 col-md-offset-1">
-      <form class="form-horizontal" role="form" method="post" action="../public/admin_students.php">
+      <form class="form-horizontal" role="form" id="student_register" method="post" action="../public/admin_students.php">
         <fieldset>
 
           <!-- Form Name -->
-          <legend>Add Student record | <a href="admin_view_students.php">view</a></legend>
+          <legend>Add Student Record</legend>
 
           <!-- Text input-->
           <div class="form-group">
@@ -143,7 +147,7 @@
         <fieldset>
 
           <!-- Form Name -->
-          <legend>Delete student record | <a href="admin_view_students.php">view</a></legend>
+          <legend>Delete Student Record</legend>
 
           <!-- Text input-->
           <div class="form-group">
@@ -187,7 +191,7 @@
       echo 
       '<form class="form-horizontal" role="form" method="post" action="admin_edit_students.php">
         <fieldset>
-          <legend>Edit Student Record | <a href="admin_view_students.php">view</a></legend>';
+          <legend>Edit Student Record</legend>';
             
                 
              echo '<div class="form-group">
@@ -230,12 +234,54 @@
     </div>
 <!--footer-->
     <div class="push"></div>
-    <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+    <div style="bottom:500px;!important">
+      <?php include("footer_projectby.php"); ?>
     </div>
     <!--footer-->
-
+    
+    
    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+   <script src="../../assets/js/docs.min.js"></script>
+   <script src="js/jquery.validate.js"></script>
+    <script>
+	$(function(){
+		$("#student_register").validate({
+			rules: {
+				email:{
+					required:true,
+					email:true
+				},
+                studentid:{
+                    required:true,
+                    number:true
+                },
+                contact:{
+                    required:true,
+					number:true,
+					minlength:10,
+                    maxlength:10
+                }
+			},
+			messages: {
+                email:{
+					required:"Please enter your Email Address",
+					email:"Please enter a valid Email Address"
+				},
+                studentid:{
+					required:"Please enter a valid id",
+					number:"Please enter numeric value"
+				},
+                contact:{
+                    required:"Please input a valid 10 digit Mobile Number ",
+                    minlength : "Please input a valid 10 digit Mobile Number ",
+                    maxlength : "Please input a valid 10 digit Mobile Number ",
+					number : "Please input a valid 10 digit Mobile Number "
+                }
+			}
+		});
+    });
+	</script>
+
+
   </body>
 </html>

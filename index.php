@@ -24,9 +24,8 @@
   <body style="background:#006699">
 
 
-
 <ul class="nav nav-pills " role="tablist">
-  <li><a href="template/admin_signin.php">Admin</a></li>
+  <a href="template/admin_signin.php"><button type="button" class="btn btn-primary btn-lg" style="background:#FAC887;">Admin</button></a>
   </ul>
 </div>
     <div class="site-wrapper">
@@ -38,7 +37,7 @@
          <img src="template/images/manipal_Logo.png" height="225" width="225">
           <div class="inner cover">
             <h1 class="cover-heading">Manipal Institue of Technology<h1>
-            <h2 class="cover-heading">Moodle</h2>
+            <h2 class="cover-heading">Student Portal</h2>
             <p class="lead">Log in</p>
             <p class="lead">
             <div class="ui-group-buttons">
@@ -51,12 +50,9 @@
           </div>
          
      
-          <div class="mastfoot">
-            <div class="inner" style="posoyion">
-              <p>Project by Shashank - Divyansh - Pooja - Shruti </a></p>
-            </div>
-          </div>
+          <span style="bottom:-7000px;!important;color:black;!important"><?php include("template/footer_projectby.php");  ?>
 
+          </span>
           
         </div>
 

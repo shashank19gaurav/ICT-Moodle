@@ -87,8 +87,8 @@
 </div>
 
 <div class="push"></div>
-    <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+    <div style="bottom:500px;!important">
+      <?php include("footer_projectby.php"); ?>
     </div>
     <!--footer-->
 

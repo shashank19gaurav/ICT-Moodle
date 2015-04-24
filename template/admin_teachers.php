@@ -61,12 +61,15 @@
     <div class="container">
         <div class="row">
 
+        <h4><a href="admin_view_teachers.php" style="float:right;">View Current Teachers</a></h4>
+        
+        
     <div class="col-md-10 col-md-offset-1">
-      <form class="form-horizontal" role="form" method="post" action="../public/admin_teachers.php">
+      <form class="form-horizontal" role="form" id="teacher_register" method="post" action="../public/admin_teachers.php">
         <fieldset>
 
           <!-- Form Name -->
-          <legend>Add Teacher Accounts | <a href="admin_view_teachers.php">view</a></legend>
+          <legend>Add Teacher Accounts</legend>
 
           <!-- Text input-->
           <div class="form-group">
@@ -77,12 +80,12 @@
           </div>
 
          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">first name</label>
+            <label class="col-sm-2 control-label" for="textinput">First name</label>
             <div class="col-sm-4">
               <input type="text" name="firstname" id="firstname" placeholder="first name" class="form-control">
             </div>
 
-            <label class="col-sm-2 control-label" for="textinput">last name</label>
+            <label class="col-sm-2 control-label" for="textinput">Last name</label>
             <div class="col-sm-4">
               <input type="text" name="lastname" id="lastname" placeholder="last name" class="form-control">
             </div>
@@ -118,7 +121,7 @@
         <fieldset>
 
           <!-- Form Name -->
-          <legend>Delete Teacher Account | <a href="admin_view_teachers.php">view</a></legend>
+          <legend>Delete Teacher Account</legend>
 
            <?php 
            echo '<div class="form-group">
@@ -159,7 +162,7 @@
       echo 
       '<form class="form-horizontal" role="form" method="post" action="admin_edit_teachers.php">
         <fieldset>
-          <legend>Edit Teacher Account | <a href="admin_view_teachers.php">view</a></legend>';
+          <legend>Edit Teacher Account</legend>';
             
                 
              echo '<div class="form-group">
@@ -199,12 +202,39 @@
     </div>
 <!--footer-->
     <div class="push"></div>
-    <div class="blog-footer">
-      <p>project by <a href="#">Sushmita-Sharan-Ashar</a></p>
+    <div style="bottom:500px;!important">
+      <?php include("footer_projectby.php"); ?>
     </div>
     <!--footer-->
 
    <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script>
+	$(function(){
+		$("#teacher_register").validate({
+			rules: {
+				email:{
+					required:true,
+					email:true
+				},
+                teacherid:{
+                    required:true,
+                    number:true
+                }
+			},
+			messages: {
+                email:{
+					required:"Please enter your Email Address",
+					email:"Please enter a valid Email Address"
+				},
+                teacherid:{
+					required:"Please enter a valid id",
+					number:"Please enter numeric value"
+				}
+			}
+		});
+    });
+	</script>
   </body>
 </html>

@@ -31,7 +31,7 @@
           <a class="blog-nav-item" href="teacher_home.php">Home</a>
           <a class="blog-nav-item" href="teacher_view.php">View post</a>
           <a class="blog-nav-item" href="teacher_post.php">New Post</a>
-          <a class="blog-nav-item" href="teacher_books.php">Books</a>
+          <a class="blog-nav-item" href="teacher_books.php">Materials</a>
           <a class="blog-nav-item active" href="teacher_events.php">Events</a>
           <a class="blog-nav-item" href="teacher_account.php">MyAccount</a>
           <a class="blog-nav-item" href="../public/logout.php">Logout</a>
@@ -87,8 +87,8 @@
 
 <!--footer-->
     <div class="push"></div>
-    <div class="blog-footer">
-      <p>Project by <a href="#">Shashank - Divyansh - Shruti - Pooja</a></p>
+    <div style="bottom:500px;!important">
+      <?php include("footer_projectby.php"); ?>
     </div>
     <!--footer-->
  </body>

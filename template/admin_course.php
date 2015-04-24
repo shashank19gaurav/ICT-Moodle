@@ -60,13 +60,14 @@
     <div class="container">
         <div class="row">
 
-
+<h4><a href="admin_view_courses.php" style="float:right;">View Current Courses</a></h4>
+        
     <div class="col-md-10 col-md-offset-1">
       <form class="form-horizontal" role="form" method="post" action="../public/admin_course.php" enctype="multipart/form-data" >
         <fieldset>
 
           <!-- Form Name -->
-          <legend>Add New Course | <a href="admin_view_courses.php">view</a></legend>
+          <legend>Add New Course</legend>
 
           <!-- Text input-->
           <div class="form-group">
@@ -103,13 +104,7 @@
             </div>
           </div>
 
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Syllabus</label>
-            <div class="col-sm-10">
-              <input type="file" name="syllabus" id="syllabus">
-            </div>
-          </div>
+          
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -124,7 +119,7 @@
         <fieldset>
 
           <!-- Form Name -->
-          <legend>Delete Course | <a href="admin_view_courses.php">view</a></legend>
+          <legend>Delete Course</legend>
 
           <!-- Text input-->
           <div class="form-group">
@@ -165,7 +160,7 @@
       echo 
       '<form class="form-horizontal" role="form" method="post" action="admin_edit_course.php">
         <fieldset>
-          <legend>Edit Course | <a href="admin_view_courses.php">view</a></legend>';
+          <legend>Edit Course</legend>';
             
                 
              echo '<div class="form-group">
@@ -202,8 +197,8 @@
     </div>
 <!--footer-->
     <div class="push"></div>
-    <div class="blog-footer">
-      <p>Project by :<a href="#">Shashank-Divyansh-Pooja-Shruti</a></p>
+    <div style="bottom:500px;!important">
+      <?php include("footer_projectby.php"); ?>
     </div>
     <!--footer-->
 
