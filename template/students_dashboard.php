@@ -37,7 +37,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 
-                <a class="navbar-brand" href="students_dashboard.php" style="color:white;">MIT-Portal</a>
+                <a class="navbar-brand" href="students_dashboard.php">MIT-Portal</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">

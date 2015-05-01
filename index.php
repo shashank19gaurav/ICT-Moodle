@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>MIT-Moodle: Home</title>
+    <title>MIT-Portal: Home</title>
 
     <script src="template/js/jquery-1.11.0.js"></script>
     
